@@ -8,19 +8,16 @@ import IconSparkles from './components/icons/IconSparkles.vue'
   <div class="container">
     <div class="grid">
       <aside class="sidebar sidebar--left">
-        <!-- Logo -->
-        <div class="logo">
-          Tw<strong>IT</strong>ter
-        </div>
+        <Logo />
 
         <!-- Navigation -->
         <nav class="nav">
           <a href="#" class="router-link-active">
-            <IconHome/>
+            <IconHome />
             Stream
           </a>
           <a href="#">
-            <IconLogin/>
+            <IconLogin />
             Login
           </a>
         </nav>
@@ -30,7 +27,7 @@ import IconSparkles from './components/icons/IconSparkles.vue'
         <!-- Login Info -->
         <section class="login-info">
           <div class="login-info__icon">
-            <IconSparkles/>
+            <IconSparkles />
           </div>
           <div class="login-info__content">
             <h2 class="login-info__heading">
@@ -47,7 +44,7 @@ import IconSparkles from './components/icons/IconSparkles.vue'
         <!-- Composer -->
         <form class="composer">
           <label class="composer__prompt">Was geht?</label>
-          <textarea maxlength="160" class="composer__textarea" placeholder="Verfasse einen Tweet..."/>
+          <textarea maxlength="160" class="composer__textarea" placeholder="Verfasse einen Tweet..." />
           <div class="composer__actions">
             <div class="composer__stats stats">
               <span class="stats__counter">0</span>
@@ -62,9 +59,9 @@ import IconSparkles from './components/icons/IconSparkles.vue'
         <!-- Stream -->
         <section class="stream">
           <!-- Tweet -->
-          <div class="tweet" v-for="tweet in [1, 2, 3, 4, 5, 6, 7, 8, 9 ]">
+          <div class="tweet" v-for="tweet in [1, 2, 3, 4, 5, 6, 7, 8, 9]">
             <div class="tweet__avatar">
-              <img :src="`https://i.pravatar.cc/100?u=${tweet}`" alt=""/>
+              <img :src="`https://i.pravatar.cc/100?u=${tweet}`" alt="" />
             </div>
             <div class="tweet__content">
               <div class="tweet__header">
@@ -127,8 +124,9 @@ import IconSparkles from './components/icons/IconSparkles.vue'
 </template>
 
 <style>
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -317,7 +315,7 @@ a {
   padding: 20px;
 }
 
-.tweet + .tweet {
+.tweet+.tweet {
   border-top: 1px solid #1e293b;
 }
 
@@ -412,7 +410,7 @@ a {
   padding: 0;
 }
 
-.content-list__item + .content-list__item {
+.content-list__item+.content-list__item {
   margin-top: 10px;
 }
 
@@ -470,7 +468,7 @@ a {
   border-color: #cbd5e1;
 }
 
-.form-group + .form-group {
+.form-group+.form-group {
   margin-top: 1.5rem;
 }
 
