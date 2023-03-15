@@ -3,14 +3,21 @@ import LoginInfo from '../components/LoginInfo.vue'
 import Composer from '../components/Composer.vue'
 import Tweet from '../components/Tweet.vue'
 import { ref, onMounted } from 'vue'
+import { fetchStream } from '../api/requests'
 
 const loading = ref(true)
 
 onMounted(async () => {
-    console.log('HomeView mounted')
-    setTimeout(() => {
+    loading.value = true
+    try {
+        const stream = await fetchStream()
+
+        console.log('Stream geladen', stream)
+    } catch (error) {
+        console.error(error)
+    } finally {
         loading.value = false
-    }, 3000)
+    }
 })
 </script>
 
