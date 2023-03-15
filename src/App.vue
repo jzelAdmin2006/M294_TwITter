@@ -18,12 +18,7 @@ import Tweet from './components/Tweet.vue'
         <Navigation />
       </aside>
       <main class="content">
-        <LoginInfo />
-        <Composer />
-        <!-- Stream -->
-        <section class="stream">
-          <Tweet v-for="tweet in [1, 2, 3, 4, 5, 6, 7, 8, 9]" />
-        </section>
+        <RouterView />
       </main>
 
       <aside class="sidebar sidebar--right">
@@ -309,33 +304,6 @@ a {
 .tweet__text {
   font-size: 1rem;
   line-height: 1.25;
-}
-
-.login-info {
-  padding: 20px;
-  color: #f1f5f9;
-  background: #334155;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.login-info__icon svg {
-  width: 50px;
-}
-
-.login-info__heading {
-  margin: 0;
-  line-height: 1;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 20px 0;
-}
-
-.login-info__content {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
 }
 
 .widget {
