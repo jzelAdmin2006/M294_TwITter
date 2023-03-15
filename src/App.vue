@@ -6,6 +6,7 @@ import Logo from './components/Logo.vue'
 import Navigation from './components/Navigation.vue'
 import LoginInfo from './components/LoginInfo.vue'
 import Composer from './components/Composer.vue'
+import Tweet from './components/Tweet.vue'
 </script>
 
 <template>
@@ -21,23 +22,7 @@ import Composer from './components/Composer.vue'
         <Composer />
         <!-- Stream -->
         <section class="stream">
-          <!-- Tweet -->
-          <div class="tweet" v-for="tweet in [1, 2, 3, 4, 5, 6, 7, 8, 9]">
-            <div class="tweet__avatar">
-              <img :src="`https://i.pravatar.cc/100?u=${tweet}`" alt="" />
-            </div>
-            <div class="tweet__content">
-              <div class="tweet__header">
-                <span class="tweet__author">Max Mustermann</span>
-                <span class="tweet__timestamp">vor 1 Minute</span>
-              </div>
-              <div class="tweet__text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam
-                tincidunt, nunc nisl aliquam nisl, eget aliquam nisl nunc vel nunc. Sed euismod, nunc ut
-                aliquam tincidunt, nunc nisl aliquam nisl, eget aliquam nisl nunc vel nunc.
-              </div>
-            </div>
-          </div>
+          <Tweet v-for="tweet in [1, 2, 3, 4, 5, 6, 7, 8, 9]" />
         </section>
       </main>
 
