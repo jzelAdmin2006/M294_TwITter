@@ -2,6 +2,8 @@
 import IconLogin from './components/icons/IconLogin.vue'
 import IconHome from './components/icons/IconHome.vue'
 import IconSparkles from './components/icons/IconSparkles.vue'
+import Logo from './components/Logo.vue'
+import Navigation from './components/Navigation.vue'
 </script>
 
 <template>
@@ -10,17 +12,7 @@ import IconSparkles from './components/icons/IconSparkles.vue'
       <aside class="sidebar sidebar--left">
         <Logo />
 
-        <!-- Navigation -->
-        <nav class="nav">
-          <a href="#" class="router-link-active">
-            <IconHome />
-            Stream
-          </a>
-          <a href="#">
-            <IconLogin />
-            Login
-          </a>
-        </nav>
+        <Navigation />
       </aside>
       <main class="content">
 
