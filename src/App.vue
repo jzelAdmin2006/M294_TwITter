@@ -4,6 +4,7 @@ import IconHome from './components/icons/IconHome.vue'
 import IconSparkles from './components/icons/IconSparkles.vue'
 import Logo from './components/Logo.vue'
 import Navigation from './components/Navigation.vue'
+import LoginInfo from './components/LoginInfo.vue'
 </script>
 
 <template>
@@ -15,24 +16,7 @@ import Navigation from './components/Navigation.vue'
         <Navigation />
       </aside>
       <main class="content">
-
-        <!-- Login Info -->
-        <section class="login-info">
-          <div class="login-info__icon">
-            <IconSparkles />
-          </div>
-          <div class="login-info__content">
-            <h2 class="login-info__heading">
-              Du bist nicht angemeldet
-            </h2>
-            <div class="login-info__action">
-              <a href="#" class="btn btn--transparent">
-                Zum Login &nbsp; &rarr;
-              </a>
-            </div>
-          </div>
-        </section>
-
+        <LoginInfo />
         <!-- Composer -->
         <form class="composer">
           <label class="composer__prompt">Was geht?</label>
