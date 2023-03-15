@@ -1,12 +1,12 @@
 <template>
     <nav class="nav">
-        <a href="#" class="router-link-active">
+        <RouterLink to="/">
             <IconHome />
             Stream
-        </a>
-        <a href="#">
+        </RouterLink>
+        <RouterLink to="/login">
             <IconLogin />
             Login
-        </a>
+        </RouterLink>
     </nav>
 </template>
