@@ -5,7 +5,7 @@
         </div>
         <div class="tweet__content">
             <div class="tweet__header">
-                <span class="tweet__author">Max Mustermann</span>
+                <span class="tweet__author">Franzi Musterfrau</span>
                 <span class="tweet__timestamp">vor 1 Minute</span>
             </div>
             <div class="tweet__text">
