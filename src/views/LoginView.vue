@@ -8,6 +8,11 @@ const emailOrPasswordNotProvided = computed(() => {
   return email.value.length === 0 || password.value.length === 0
 })
 
+const errors = ref({
+  email: '',
+  password: '',
+})
+
 async function login() {
   console.log('login', email.value, password.value)
 }
@@ -20,15 +25,15 @@ async function login() {
         <div class="form-group">
           <label class="form-label" for="email">E-Mail</label>
           <input class="form-input" type="email" id="email" v-model="email" />
-          <div class="form-error">
-            Ungültige E-Mail
+          <div class="form-error" v-if="errors.email.length > 0">
+            {{ errors.email }}
           </div>
         </div>
-        <div class="form-group">
+        <div class=" form-group">
           <label class="form-label" for="password">Passwort</label>
           <input class="form-input" type="password" id="password" v-model="password" />
-          <div class="form-error">
-            Falsches Passwort
+          <div class="form-error" v-if="errors.password.length > 0">
+            {{ errors.password }}
           </div>
         </div>
         <div class="form-group">
