@@ -1,4 +1,7 @@
 <script setup>
+import { formatDistanceToNow } from 'date-fns'
+import { de } from 'date-fns/locale'
+
 defineProps({
     user: {
         type: Object,
@@ -9,7 +12,7 @@ defineProps({
         required: true,
     },
     createdAt: {
-        type: String,
+        type: Date,
         required: true,
     },
 });
@@ -23,7 +26,8 @@ defineProps({
         <div class="tweet__content">
             <div class="tweet__header">
                 <span class="tweet__author">{{ user.name }}</span>
-                <span class="tweet__timestamp">erstellt um {{ createdAt }}</span>
+                <span class="tweet__timestamp">{{ formatDistanceToNow(new Date(createdAt), { locale: de, addSuffix: true })
+                }}</span>
             </div>
             <div class="tweet__text">
                 {{ text }}

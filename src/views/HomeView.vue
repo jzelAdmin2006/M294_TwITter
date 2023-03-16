@@ -25,7 +25,7 @@ async function loadStream() {
     loading.value = true
     try {
         const stream = await fetchStream()
-
+        console.log('Stream', stream)
         tweets.value = stream
     } catch (error) {
         console.error(error)
@@ -44,6 +44,6 @@ async function loadStream() {
         Lade Tweets...
     </div>
     <section class="stream" v-else>
-        <Tweet v-for="tweet in tweets" :user="tweet.user" :text="tweet.text" :created-at="tweet.createdAt" />
+        <Tweet v-for="tweet in tweets" :user="tweet.user" :text="tweet.text" :createdAt="tweet.created_at" />
     </section>
 </template>
