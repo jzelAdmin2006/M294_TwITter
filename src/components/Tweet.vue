@@ -7,7 +7,7 @@ import { useAuth } from '../api/auth';
 import { likeTweet } from '../api/requests';
 
 const { isLoggedIn } = useAuth()
-const emit = defineEmits(['liked']);
+const emit = defineEmits(['liked', 'retweet']);
 
 const props = defineProps({
     id: {
@@ -48,6 +48,14 @@ function like() {
 }
 
 const isLiked = computed(() => props.liked);
+
+function retweet() {
+    if (isLoggedIn.value) {
+        emit('retweet');
+    } else {
+        router.push('/login')
+    }
+}
 </script>
 
 <template>
@@ -72,6 +80,7 @@ const isLiked = computed(() => props.liked);
                     {{ likes }}
                 </div>
             </div>
+            <button class="btn btn--primary retweet" @click="retweet">Retweet</button>
         </div>
     </div>
 </template>
@@ -151,5 +160,9 @@ const isLiked = computed(() => props.liked);
 
 .count {
     margin-left: 10px;
+}
+
+.retweet {
+    margin-top: 10px;
 }
 </style>

@@ -39,6 +39,15 @@ function like(tweet) {
     tweet.likes++
     currentUser.value.liked_tweets.push(tweet.id)
 }
+
+function retweet(text) {
+    console.log('retweet', text)
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
 <template>
@@ -51,6 +60,6 @@ function like(tweet) {
     <section class="stream" v-else>
         <Tweet v-for="tweet in tweets" :id="tweet.id" :user="tweet.user" :text="tweet.text" :createdAt="tweet.created_at"
             :likes="tweet.likes" :liked="isLoggedIn ? currentUser.liked_tweets.includes(tweet.id) : false"
-            @liked="like(tweet)" />
+            @liked="like(tweet)" @retweet="retweet(tweet.text)" />
     </section>
 </template>
