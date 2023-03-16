@@ -1,9 +1,15 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { createTweet } from './../api/requests'
 
 const tweetText = ref('')
 
 const tweetTextLength = computed(() => tweetText.value.length)
+
+function submit() {
+    createTweet(tweetText.value)
+    tweetText.value = ''
+}
 </script>
 <template>
     <form class="composer">
@@ -14,7 +20,7 @@ const tweetTextLength = computed(() => tweetText.value.length)
                 <span class="stats__counter">{{ tweetTextLength }}</span>
                 <span class="stats__max">/ 160</span>
             </div>
-            <button :disabled="tweetTextLength < 5" class="btn btn--primary">
+            <button :disabled="tweetTextLength < 5" class="btn btn--primary" @click="submit">
                 Tweet veröffentlichen
             </button>
         </div>
