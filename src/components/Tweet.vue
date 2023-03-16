@@ -2,6 +2,11 @@
 import { formatDistanceToNow } from 'date-fns'
 import { de } from 'date-fns/locale'
 import { likeTweet } from '../api/requests';
+import { ref } from 'vue';
+import { useAuth } from '../api/auth'
+import { useRouter } from 'vue-router'
+
+const { isLoggedIn } = useAuth()
 
 const props = defineProps({
     id: {
@@ -26,14 +31,17 @@ const props = defineProps({
     },
 });
 
+const localLikes = ref(props.likes);
+const router = useRouter()
 
 function like() {
-    console.log('like');
-    document.dispatchEvent(new Event('liked'));
-    likeTweet(props.id);
+    if (isLoggedIn.value) {
+        localLikes.value++;
+        likeTweet(props.id);
+    } else {
+        router.push('/login')
+    }
 }
-
-defineEmits(['liked']);
 </script>
 
 <template>
@@ -55,7 +63,7 @@ defineEmits(['liked']);
                     ❤️
                 </div>
                 <div class="count">
-                    {{ likes }}
+                    {{ localLikes }}
                 </div>
             </div>
         </div>
