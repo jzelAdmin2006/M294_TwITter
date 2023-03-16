@@ -6,13 +6,13 @@ const tweetText = ref('')
 
 const tweetTextLength = computed(() => tweetText.value.length)
 
-function submit() {
-    createTweet(tweetText.value)
-    tweetText.value = ''
-    document.dispatchEvent(new Event('posted'));
-}
+const emit = defineEmits(['posted'])
 
-defineEmits(['posted'])
+async function submit() {
+    await createTweet(tweetText.value)
+    tweetText.value = ''
+    emit('posted')
+}
 </script>
 <template>
     <form class="composer">

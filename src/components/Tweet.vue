@@ -2,11 +2,13 @@
 import { formatDistanceToNow } from 'date-fns'
 import { de } from 'date-fns/locale'
 import { likeTweet } from '../api/requests';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useAuth } from '../api/auth'
 import { useRouter } from 'vue-router'
+import { checkAuth } from '../api/requests'
 
 const { isLoggedIn } = useAuth()
+const emit = defineEmits(['liked']);
 
 const props = defineProps({
     id: {
@@ -29,19 +31,24 @@ const props = defineProps({
         type: Number,
         required: true,
     },
+    liked: {
+        type: Boolean,
+        required: true,
+    },
 });
 
-const localLikes = ref(props.likes);
 const router = useRouter()
 
 function like() {
     if (isLoggedIn.value) {
-        localLikes.value++;
         likeTweet(props.id);
+        emit('liked');
     } else {
         router.push('/login')
     }
 }
+
+const isLiked = computed(() => props.liked);
 </script>
 
 <template>
@@ -59,11 +66,11 @@ function like() {
                 {{ text }}
             </div>
             <div class="tweet__likes">
-                <div class="heart" @click="like">
+                <button class="heart" @click="like" :disabled="isLiked" v-bind:class="{ heart__liked: isLiked }">
                     ❤️
-                </div>
+                </button>
                 <div class="count">
-                    {{ localLikes }}
+                    {{ likes }}
                 </div>
             </div>
         </div>
@@ -137,6 +144,10 @@ function like() {
     border: 2px solid black;
     text-align: center;
     cursor: pointer;
+}
+
+.heart__liked {
+    cursor: default;
 }
 
 .count {
