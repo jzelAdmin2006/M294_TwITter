@@ -26,17 +26,8 @@ async function login() {
   } catch (exception) {
     // Die Zugangsdaten waren falsch, logge die Exception.
     console.error('login error', exception)
-    console.log('writing exception errors to variable', exception.errors)
     // Übernehme die Fehlermeldungen aus der Exception. 
-    mergeErrors(exception.errors)
-  }
-}
-
-function mergeErrors(errorObj) {
-  for (const key in errorObj) {
-    if (errors.value.hasOwnProperty(key)) {
-      errors.value[key] = errorObj[key];
-    }
+    errors.value = exception.errors
   }
 }
 </script>
@@ -48,14 +39,14 @@ function mergeErrors(errorObj) {
         <div class="form-group">
           <label class="form-label" for="email">E-Mail</label>
           <input class="form-input" type="email" id="email" v-model="email" />
-          <div class="form-error" v-if="errors.email.length > 0">
+          <div class="form-error" v-if="errors.email">
             {{ errors.email }}
           </div>
         </div>
         <div class=" form-group">
           <label class="form-label" for="password">Passwort</label>
           <input class="form-input" type="password" id="password" v-model="password" />
-          <div class="form-error" v-if="errors.password.length > 0">
+          <div class="form-error" v-if="errors.password">
             {{ errors.password }}
           </div>
         </div>
