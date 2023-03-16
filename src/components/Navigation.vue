@@ -1,10 +1,22 @@
+<script setup>
+import { computed } from 'vue'
+import { useAuth } from '../api/auth'
+
+// isLoggedIn Funktion importieren.
+const { isLoggedIn, logout } = useAuth()
+</script>
+
 <template>
     <nav class="nav">
         <RouterLink to="/">
             <IconHome />
             Stream
         </RouterLink>
-        <RouterLink to="/login">
+        <a href="#" class="logout-link" v-if="isLoggedIn" @click="logout">
+            <IconLogin />
+            Logout
+        </a>
+        <RouterLink to="/login" v-else>
             <IconLogin />
             Login
         </RouterLink>
