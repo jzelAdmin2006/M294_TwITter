@@ -18,6 +18,10 @@ onMounted(async () => {
 })
 
 onMounted(async () => {
+    loadStream()
+})
+
+async function loadStream() {
     loading.value = true
     try {
         const stream = await fetchStream()
@@ -28,13 +32,13 @@ onMounted(async () => {
     } finally {
         loading.value = false
     }
-})
+}
 </script>
 
 <template>
     HOME
     <LoginInfo v-if="!isLoggedIn" />
-    <Composer v-if="isLoggedIn" />
+    <Composer v-if="isLoggedIn" @posted="loadStream" />
     <!-- Stream -->
     <div class="loading" v-if="loading">
         Lade Tweets...

@@ -9,7 +9,10 @@ const tweetTextLength = computed(() => tweetText.value.length)
 function submit() {
     createTweet(tweetText.value)
     tweetText.value = ''
+    document.dispatchEvent(new Event('posted'));
 }
+
+defineEmits(['posted'])
 </script>
 <template>
     <form class="composer">
