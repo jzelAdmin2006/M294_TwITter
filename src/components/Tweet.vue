@@ -1,8 +1,13 @@
 <script setup>
 import { formatDistanceToNow } from 'date-fns'
 import { de } from 'date-fns/locale'
+import { likeTweet } from '../api/requests';
 
-defineProps({
+const props = defineProps({
+    id: {
+        type: Number,
+        required: true,
+    },
     user: {
         type: Object,
         required: true,
@@ -12,10 +17,23 @@ defineProps({
         required: true,
     },
     createdAt: {
-        type: Date,
+        type: String,
+        required: true,
+    },
+    likes: {
+        type: Number,
         required: true,
     },
 });
+
+
+function like() {
+    console.log('like');
+    document.dispatchEvent(new Event('liked'));
+    likeTweet(props.id);
+}
+
+defineEmits(['liked']);
 </script>
 
 <template>
@@ -32,6 +50,88 @@ defineProps({
             <div class="tweet__text">
                 {{ text }}
             </div>
+            <div class="tweet__likes">
+                <div class="heart" @click="like">
+                    ❤️
+                </div>
+                <div class="count">
+                    {{ likes }}
+                </div>
+            </div>
         </div>
     </div>
 </template>
+
+<style>
+.tweet {
+    display: flex;
+    padding: 20px;
+}
+
+.tweet+.tweet {
+    border-top: 1px solid #1e293b;
+}
+
+.tweet:last-child {
+    border-bottom: 1px solid #1e293b;
+}
+
+.tweet__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.tweet__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tweet__content {
+    flex: 1;
+}
+
+.tweet__header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.tweet__author {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.tweet__timestamp {
+    color: #64748b;
+    font-size: .9rem;
+}
+
+.tweet__text {
+    font-size: 1rem;
+    line-height: 1.25;
+}
+
+.tweet__likes {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.heart {
+    font-size: 2rem;
+    display: inline-block;
+    border-radius: 50%;
+    border: 2px solid black;
+    text-align: center;
+    cursor: pointer;
+}
+
+.count {
+    margin-left: 10px;
+}
+</style>

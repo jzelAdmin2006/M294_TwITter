@@ -36,7 +36,6 @@ async function loadStream() {
 </script>
 
 <template>
-    HOME
     <LoginInfo v-if="!isLoggedIn" />
     <Composer v-if="isLoggedIn" @posted="loadStream" />
     <!-- Stream -->
@@ -44,6 +43,7 @@ async function loadStream() {
         Lade Tweets...
     </div>
     <section class="stream" v-else>
-        <Tweet v-for="tweet in tweets" :user="tweet.user" :text="tweet.text" :createdAt="tweet.created_at" />
+        <Tweet v-for="tweet in tweets" :id="tweet.id" :user="tweet.user" :text="tweet.text" :createdAt="tweet.created_at"
+            :likes="tweet.likes" />
     </section>
 </template>
