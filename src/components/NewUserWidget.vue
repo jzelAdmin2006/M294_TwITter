@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { format } from 'date-fns';
+import { onMounted, ref } from 'vue';
 import { fetchNewUsers } from '../api/requests';
 import Widget from './Widget.vue';
-import { format } from 'date-fns';
 
 const newUsers = ref([]);
 const loading = ref(true)

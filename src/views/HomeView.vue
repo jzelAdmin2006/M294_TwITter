@@ -1,11 +1,10 @@
 <script setup>
-import LoginInfo from '../components/LoginInfo.vue'
-import Composer from '../components/Composer.vue'
-import Tweet from '../components/Tweet.vue'
 import { onMounted, ref } from 'vue'
-import { fetchStream } from '../api/requests'
-import { checkAuth } from '../api/requests'
 import { useAuth } from '../api/auth'
+import { checkAuth, fetchStream } from '../api/requests'
+import Composer from '../components/Composer.vue'
+import LoginInfo from '../components/LoginInfo.vue'
+import Tweet from '../components/Tweet.vue'
 
 const loading = ref(true)
 const tweets = ref([])

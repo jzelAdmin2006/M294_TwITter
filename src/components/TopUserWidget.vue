@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref } from 'vue';
 import { fetchTopUsers } from '../api/requests';
 import Widget from './Widget.vue';
 

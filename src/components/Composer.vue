@@ -1,6 +1,6 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { createTweet } from './../api/requests'
+import { computed, ref } from 'vue';
+import { createTweet } from './../api/requests';
 
 const tweetText = ref('')
 

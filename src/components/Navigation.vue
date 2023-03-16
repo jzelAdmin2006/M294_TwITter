@@ -1,8 +1,7 @@
 <script setup>
-import { computed } from 'vue'
-import { useAuth } from '../api/auth'
-import IconHome from './icons/IconHome.vue'
-import IconLogin from './icons/IconLogin.vue'
+import { useAuth } from '../api/auth';
+import IconHome from './icons/IconHome.vue';
+import IconLogin from './icons/IconLogin.vue';
 
 // isLoggedIn Funktion importieren.
 const { isLoggedIn, logout } = useAuth()

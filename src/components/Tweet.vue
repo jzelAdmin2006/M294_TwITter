@@ -1,11 +1,10 @@
 <script setup>
-import { formatDistanceToNow } from 'date-fns'
-import { de } from 'date-fns/locale'
+import { formatDistanceToNow } from 'date-fns';
+import { de } from 'date-fns/locale';
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuth } from '../api/auth';
 import { likeTweet } from '../api/requests';
-import { ref, computed } from 'vue';
-import { useAuth } from '../api/auth'
-import { useRouter } from 'vue-router'
-import { checkAuth } from '../api/requests'
 
 const { isLoggedIn } = useAuth()
 const emit = defineEmits(['liked']);

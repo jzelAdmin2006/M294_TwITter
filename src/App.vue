@@ -1,15 +1,8 @@
 <script setup>
-import IconLogin from './components/icons/IconLogin.vue'
-import IconHome from './components/icons/IconHome.vue'
-import IconSparkles from './components/icons/IconSparkles.vue'
 import Logo from './components/Logo.vue'
 import Navigation from './components/Navigation.vue'
-import LoginInfo from './components/LoginInfo.vue'
-import Composer from './components/Composer.vue'
-import Tweet from './components/Tweet.vue'
-import Widget from './components/Widget.vue'
-import TopUserWidget from './components/TopUserWidget.vue'
 import NewUserWidget from './components/NewUserWidget.vue'
+import TopUserWidget from './components/TopUserWidget.vue'
 </script>
 
 <template>

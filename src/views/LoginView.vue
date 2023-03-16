@@ -1,7 +1,7 @@
 <script setup>
-import { loginUser } from '../api/requests'
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { loginUser } from '../api/requests';
 
 const email = ref('')
 const password = ref('')
