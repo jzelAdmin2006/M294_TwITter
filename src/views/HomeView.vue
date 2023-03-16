@@ -51,6 +51,7 @@ function like(tweet) {
     </div>
     <section class="stream" v-else>
         <Tweet v-for="tweet in tweets" :id="tweet.id" :user="tweet.user" :text="tweet.text" :createdAt="tweet.created_at"
-            :likes="tweet.likes" :liked="currentUser.liked_tweets.includes(tweet.id)" @liked="like(tweet)" />
+            :likes="tweet.likes" :liked="isLoggedIn ? currentUser.liked_tweets.includes(tweet.id) : false"
+            @liked="like(tweet)" />
     </section>
 </template>
