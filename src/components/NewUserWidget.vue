@@ -1,17 +1,18 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue';
-import { fetchTopUsers } from '../api/requests';
+import { fetchNewUsers } from '../api/requests';
 import Widget from './Widget.vue';
+import { format } from 'date-fns';
 
-const topUsers = ref([]);
+const newUsers = ref([]);
 const loading = ref(true)
 
 onMounted(async () => {
     loading.value = true
     try {
-        const stream = await fetchTopUsers()
+        const stream = await fetchNewUsers()
 
-        topUsers.value = stream
+        newUsers.value = stream
     } catch (error) {
         console.error(error)
     } finally {
@@ -21,16 +22,16 @@ onMounted(async () => {
 </script>
 
 <template>
-    <!-- Top User Widget -->
-    <Widget title="Top User">
+    <!-- Neue User Widget -->
+    <Widget title="Neue User">
         <ul class="content-list">
             <div class="loading" v-if="loading">
-                Lade Top User...
+                Lade neue User...
             </div>
-            <li class="content-list__item" v-for="user in topUsers" v-else>
+            <li class="content-list__item" v-for="user in newUsers" v-else>
                 <a href="#">
                     <span class="content-list__meta">
-                        {{ user.tweets_count }} Tweets
+                        {{ format(new Date(user.created_at), 'dd.MM.yyyy') }}
                     </span>
                     <span class="content-list__text">
                         {{ user.name }}
