@@ -33,8 +33,8 @@ onMounted(async () => {
 
 <template>
     HOME
-    <LoginInfo v-show="!isLoggedIn" />
-    <Composer v-show="isLoggedIn" />
+    <LoginInfo v-if="!isLoggedIn" />
+    <Composer v-if="isLoggedIn" />
     <!-- Stream -->
     <div class="loading" v-if="loading">
         Lade Tweets...
