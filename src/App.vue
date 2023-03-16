@@ -8,6 +8,7 @@ import LoginInfo from './components/LoginInfo.vue'
 import Composer from './components/Composer.vue'
 import Tweet from './components/Tweet.vue'
 import Widget from './components/Widget.vue'
+import TopUserWidget from './components/TopUserWidget.vue'
 </script>
 
 <template>
@@ -23,21 +24,7 @@ import Widget from './components/Widget.vue'
       </main>
 
       <aside class="sidebar sidebar--right">
-        <!-- Top User Widget -->
-        <Widget title="Top User">
-          <ul class="content-list">
-            <li class="content-list__item" v-for="user in [1, 2, 3, 4, 5]">
-              <a href="#">
-                <span class="content-list__meta">
-                  94 Tweets
-                </span>
-                <span class="content-list__text">
-                  Max Mustermann
-                </span>
-              </a>
-            </li>
-          </ul>
-        </Widget>
+        <TopUserWidget />
 
         <!-- Neue User Widget -->
         <Widget title="Neue User">
