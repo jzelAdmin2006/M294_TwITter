@@ -1,12 +1,16 @@
 <script setup>
-import { computed, ref } from 'vue';
-import { createTweet } from './../api/requests';
+import { computed, defineEmits, defineProps } from 'vue';
 
-const tweetText = ref('')
+const props = defineProps({
+    tweetText: {
+        type: String,
+        required: true
+    }
+})
 
-const tweetTextLength = computed(() => tweetText.value.length)
+const tweetTextLength = computed(() => props.tweetText.length)
 
-const emit = defineEmits(['posted'])
+const emit = defineEmits(['posted', 'update:tweetText'])
 
 async function submit() {
     await createTweet(tweetText.value)
@@ -17,7 +21,8 @@ async function submit() {
 <template>
     <form class="composer">
         <label class="composer__prompt">Was geht?</label>
-        <textarea maxlength="160" class="composer__textarea" placeholder="Verfasse einen Tweet..." v-model="tweetText" />
+        <textarea maxlength="160" class="composer__textarea" placeholder="Verfasse einen Tweet..." :value="tweetText"
+            @input="$emit('update:tweetText', $event.target.value)" />
         <div class="composer__actions">
             <div class="composer__stats stats">
                 <span class="stats__counter">{{ tweetTextLength }}</span>

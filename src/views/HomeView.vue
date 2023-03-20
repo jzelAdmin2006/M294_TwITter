@@ -40,6 +40,8 @@ function like(tweet) {
     currentUser.value.liked_tweets.push(tweet.id)
 }
 
+const composerText = ref('')
+
 function retweet(text) {
     console.log('retweet', text)
     window.scroll({
@@ -47,12 +49,14 @@ function retweet(text) {
         left: 0,
         behavior: 'smooth'
     });
+    composerText.value = text
 }
 </script>
 
 <template>
     <LoginInfo v-if="!isLoggedIn" />
-    <Composer v-if="isLoggedIn" @posted="loadStream" />
+    <Composer v-if="isLoggedIn" @posted="loadStream" :tweetText="composerText"
+        @update:tweetText="newText => composerText = newText" />
     <!-- Stream -->
     <div class="loading" v-if="loading">
         Lade Tweets...
