@@ -6,6 +6,8 @@ import Composer from '../components/Composer.vue'
 import LoginInfo from '../components/LoginInfo.vue'
 import Tweet from '../components/Tweet.vue'
 
+document.title = 'TwITter - Dein IT-Portal im Internet'
+
 const loading = ref(true)
 const tweets = ref([])
 const { isLoggedIn } = useAuth()

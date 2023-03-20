@@ -3,6 +3,8 @@ import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { loginUser } from '../api/requests';
 
+document.title = 'TwITter - Login'
+
 const email = ref('')
 const password = ref('')
 
