@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue';
+import { createTweet } from '../api/requests';
 
 const props = defineProps({
     tweetText: {
@@ -13,13 +14,13 @@ const tweetTextLength = computed(() => props.tweetText.length)
 const emit = defineEmits(['posted', 'update:tweetText'])
 
 async function submit() {
-    await createTweet(tweetText.value)
-    tweetText.value = ''
+    await createTweet(props.tweetText)
+    emit('update:tweetText', '')
     emit('posted')
 }
 </script>
 <template>
-    <form class="composer">
+    <form @submit.prevent class="composer">
         <label class="composer__prompt">Was geht?</label>
         <textarea maxlength="160" class="composer__textarea" placeholder="Verfasse einen Tweet..." :value="tweetText"
             @input="$emit('update:tweetText', $event.target.value)" />
