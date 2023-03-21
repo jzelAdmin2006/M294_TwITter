@@ -68,8 +68,29 @@ function retweet(text) {
         Lade Tweets...
     </div>
     <section class="stream" v-else>
-        <Tweet v-for="tweet in tweets" :id="tweet.id" :user="tweet.user" :text="tweet.text" :createdAt="tweet.created_at"
-            :likes="tweet.likes" :liked="isLoggedIn ? currentUser.liked_tweets.includes(tweet.id) : false"
-            @liked="like(tweet)" @retweet="retweet(tweet.text)" />
+        <Tweet v-for="tweet, index in tweets" :id="tweet.id" :user="tweet.user" :text="tweet.text"
+            :createdAt="tweet.created_at" :likes="tweet.likes"
+            :liked="isLoggedIn ? currentUser.liked_tweets.includes(tweet.id) : false" @liked="like(tweet)"
+            @retweet="retweet(tweet.text)" :style="{ animationDelay: index * 0.1 + 's' }" />
     </section>
 </template>
+
+<style>
+.tweet {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: einfliegen 0.5s forwards;
+}
+
+@keyframes einfliegen {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
