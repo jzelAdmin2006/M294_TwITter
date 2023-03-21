@@ -14,9 +14,13 @@ const { isLoggedIn } = useAuth()
 const currentUser = ref(null)
 
 onMounted(async () => {
-    const response = await checkAuth()
-    currentUser.value = response.user
-    console.log('checkAuth Resultat', response)
+    if (isLoggedIn.value) {
+        const response = await checkAuth()
+        currentUser.value = response.user
+        console.log('checkAuth Resultat', response)
+    } else {
+        console.log('Nicht eingeloggt')
+    }
 })
 
 onMounted(async () => {
