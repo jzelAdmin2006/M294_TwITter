@@ -1,8 +1,8 @@
 <script setup>
-import Logo from './components/Logo.vue'
-import Navigation from './components/Navigation.vue'
-import NewUserWidget from './components/NewUserWidget.vue'
-import TopUserWidget from './components/TopUserWidget.vue'
+import Logo from './components/Logo.vue';
+import Navigation from './components/Navigation.vue';
+import NewUserWidget from './components/NewUserWidget.vue';
+import TopUserWidget from './components/TopUserWidget.vue';
 </script>
 
 <template>
@@ -14,7 +14,13 @@ import TopUserWidget from './components/TopUserWidget.vue'
         <Navigation />
       </aside>
       <main class="content">
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <transition name="slide" mode="out-in">
+            <div :key="$route.name">
+              <component :is="Component" />
+            </div>
+          </transition>
+        </RouterView>
       </main>
 
       <aside class="sidebar sidebar--right">
@@ -27,6 +33,21 @@ import TopUserWidget from './components/TopUserWidget.vue'
 </template>
 
 <style>
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.1s, transform 0.1s;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(+100%);
+}
+
 *,
 *::before,
 *::after {
