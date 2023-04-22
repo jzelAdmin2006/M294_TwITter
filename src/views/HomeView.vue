@@ -68,7 +68,7 @@ function retweet(text) {
         Lade Tweets...
     </div>
     <section class="stream" v-else>
-        <Tweet v-for="tweet, index in tweets" :id="tweet.id" :user="tweet.user" :text="tweet.text"
+        <Tweet v-for="tweet, index in tweets" :key="tweet.id" :id="tweet.id" :user="tweet.user" :text="tweet.text"
             :createdAt="tweet.created_at" :likes="tweet.likes"
             :liked="isLoggedIn ? currentUser.liked_tweets.includes(tweet.id) : false" @liked="like(tweet)"
             @retweet="retweet(tweet.text)" :style="{ animationDelay: index * 0.1 + 's' }" />
